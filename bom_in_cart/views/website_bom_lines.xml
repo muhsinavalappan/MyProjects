@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="website_bom_line" inherit_id="website_sale.cart_lines">
+            <xpath expr="//td[hasclass('td-product_name')]" position="inside">
+                <div>
+                    <t t-foreach="value" t-as="val">
+                        <t t-if="line.product_template_id.id == val">
+                            <t t-foreach="line.product_template_id.bom_ids.bom_line_ids.product_id"
+                               t-as="product">
+                                <li>
+                                    <t t-esc="product.name"/>
+                                </li>
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

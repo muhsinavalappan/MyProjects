@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="portal_my_home_menu_events"
+              name="Portal layout : event menu entries"
+              inherit_id="portal.portal_breadcrumbs">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+            <li t-if="page_name == 'event'" class="breadcrumb-item">Upcoming
+                Events
+            </li>
+            <li t-if="page_name == 'events'" class="breadcrumb-item">
+                <a t-attf-href="/upcoming/events/?{{ keep_query() }}">Upcoming
+                    Events
+                </a>
+                /
+                <span t-out="name.u_name.name"/>
+            </li>
+        </xpath>
+    </template>
+    <template id="portal_upcoming_events" name="Upcoming Events"
+              customize_show="True" inherit_id="portal.portal_my_home">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Upcoming Events</t>
+                <t t-set="url" t-value="'/upcoming/events'"/>
+                <li t-if="order_id" class="breadcrumb-item active">
+                    <span t-field="name.u_name"/>
+                    <t t-out="name.u_name.name"/>
+                    <!--                    Upcoming Events</t>-->
+                </li>
+                <t t-set="placeholder_count" t-value="'event_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="portal_event_template" name="Upcoming Events">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True"/>
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">UpcomingEvents</t>
+            </t>
+            <t t-if="name" t-call="portal.portal_table">
+                <thead>
+                    <tr class="active">
+                        <th>University</th>
+                        <th class="text-end">Event</th>
+                        <th class="text-end">Start Date</th>
+                        <th class="text-end">End Date</th>
+                    </tr>
+                </thead>
+                <t t-foreach="name" t-as="event">
+                    <tr>
+                        <td>
+                            <a t-attf-href="/upcoming/events/#{event.id}">
+                                <t t-out="event.u_name.name"/>
+                            </a>
+                        </td>
+                        <td class="text-end">
+                            <span t-field="event.u_event"/>
+                        </td>
+                        <td class="text-end">
+                            <span t-field="event.start_date"/>
+                        </td>
+                        <td class="text-end">
+                            <span t-field="event.end_date"/>
+                        </td>
+                    </tr>
+                </t>
+            </t>
+            <p t-else="">There are currently no upcoming events</p>
+        </t>
+    </template>
+</odoo>

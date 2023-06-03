@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="online_patient_form" name="Create Patient Card">
+        <t t-call="website.layout">
+            <div id="wrap" class="main_div">
+                <section class="s_website_form" data-vcss="001"
+                         data-snippet="s_website_form">
+                    <div class="container">
+                        <form action="/appointment/create/submit" method="post"
+                              enctype="multipart/form-data"
+                              class="o_mark_required" data-mark="*"
+                              data-model_name="" data-success-page="" id="form">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <h2 id="heading"> New Patient Card</h2>
+
+                            <div class="s_website_form_rows row s_col_no_bgcolor" >
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field" id="divs">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px"
+                                               for="search">
+                                            <span class="s_website_form_label_content">
+                                                Name
+                                            </span>
+                                            <span class="s_website_form_mark">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <select name="patient_name_id" id="patient_name_id"
+                                                    	class="form-control link-style">
+                                                	<option value="">select</option>
+                                                	<t t-foreach="partners" t-as="partner">
+                                                    	<option t-att-value="partner.id">
+<!--                                                        	<t t-esc="partner.name" t-att-value="partner.id"/>-->
+                                                        	<t t-esc="partner.name" t-att-value="partner.id"/>
+                                                    	</option>
+                                                	</t>
+                                            </select>
+<!--                                            <input id="name"-->
+<!--                                                   type="char"-->
+<!--                                                   class="form-control s_website_form_input"-->
+<!--                                                   t-att-value="patient_name_id"-->
+<!--                                                   name="name" required="1"/>-->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field" id="divs">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px"
+                                               for="date">
+                                            <span class="s_website_form_label_content">
+                                                Date
+                                            </span>
+                                            <span class="s_website_form_mark">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="date"
+                                                   type="date"
+                                                   class="form-control s_website_form_input"
+                                                   t-att-value="date"
+                                                   name="date" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field" id="divs">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px"
+                                               for="date">
+                                            <span class="s_website_form_label_content">
+                                                Address
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="address"
+                                                   type="text"
+                                                   class="form-control s_website_form_input"
+                                                   name="address" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <br/><br/>
+
+                                <div class="form-group col-12 s_website_form_submit"
+                                     data-name="Submit Button" id="divs">
+                                    <div style="width: 200px;"
+                                         class="s_website_form_label"/>
+                                    <button type="submit"
+                                            class="btn btn-primary" id="btn1">Create
+                                        Patient Card
+                                    </button>
+
+                                    <a href="/appointment/create/new" id="my_link">
+                                        Create New Card</a>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+    <template id="online_new_patient_form" name="Create Patient Card">
+        <t t-call="website.layout">
+            <div id="wrap" class="main_div">
+                <section class="s_website_form" data-vcss="001"
+                         data-snippet="s_website_form">
+                    <div class="container">
+                        <form action="/appointment/create/new/submit" method="post"
+                              enctype="multipart/form-data"
+                              class="o_mark_required" data-mark="*"
+                              data-model_name="" data-success-page="" id="form">
+                            <input type="hidden" name="csrf_token"
+                                   t-att-value="request.csrf_token()"/>
+                            <h2 id="heading">New Partner</h2>
+
+                            <div class="s_website_form_rows row s_col_no_bgcolor" >
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field" id="divs">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px"
+                                               for="search">
+                                            <span class="s_website_form_label_content">
+                                                Name
+                                            </span>
+                                            <span class="s_website_form_mark">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+<!--                                            <select name="name" id="name"-->
+<!--                                                    	class="form-control link-style">-->
+<!--                                                	<option value="">select</option>-->
+<!--                                                	<t t-foreach="partner" t-as="partner">-->
+<!--                                                    	<option t-att-value="patient_name_id">-->
+<!--&lt;!&ndash;                                                        	<t t-esc="patient.name" t-att-value="patient.id"/>&ndash;&gt;-->
+<!--                                                        	<t t-esc="partner.name" t-att-value="patient_name_id"/>-->
+<!--                                                    	</option>-->
+<!--                                                	</t>-->
+<!--                                            </select>-->
+                                            <input id="name"
+                                                   type="char"
+                                                   class="form-control s_website_form_input"
+                                                   t-att-value="patient_name_id"
+                                                   name="name" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field" id="divs">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px"
+                                               for="date">
+                                            <span class="s_website_form_label_content">
+                                                Date of Birth
+                                            </span>
+                                            <span class="s_website_form_mark">
+                                                *
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="date"
+                                                   type="date"
+                                                   class="form-control s_website_form_input"
+                                                   t-att-value="date"
+                                                   name="date" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                                     data-type="char" data-name="Field" id="divs">
+                                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                                        <label class="col-form-label col-sm-auto s_website_form_label"
+                                               style="width: 200px"
+                                               for="date">
+                                            <span class="s_website_form_label_content">
+                                                Address
+                                            </span>
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="address"
+                                                   type="text"
+                                                   class="form-control s_website_form_input"
+                                                   name="address" required="1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/><br/>
+                                <br/><br/>
+
+                                <div class="form-group col-12 s_website_form_submit"
+                                     data-name="Submit Button" id="divs">
+                                    <div style="width: 200px;"
+                                         class="s_website_form_label"/>
+                                    <button type="submit"
+                                            class="btn btn-primary" id="btn1">Submit
+                                    </button>
+                                    <a href="/appointment" id="my_link">
+                                        Back to Appointment</a>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_pos_custom_message_tree" model="ir.ui.view">
+            <field name="name">pos.custom.message.tree</field>
+            <field name="model">pos.custom.message</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="title"/>
+                    <field name="message_type"/>
+                    <field name="execution_time"/>
+                    <field name="message_text" optional="hide"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_pos_custom_message_form" model="ir.ui.view">
+            <field name="name">pos.custom.message.form</field>
+            <field name="model">pos.custom.message</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="message_type"/>
+                            <field name="title"/>
+                            <field name="message_text"/>
+                        </group>
+                        <group/>
+                        <group>
+                            <field name="execution_time" widget="float_time"/>
+                            <field name="pos_config" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="pos_custom_message_action" model="ir.actions.act_window">
+            <field name="name">Pos Custom Message</field>
+            <field name="res_model">pos.custom.message</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+    <menuitem id="=pos_custom_message_menu_root"
+              action="pos_custom_message_action"
+              parent="point_of_sale.menu_point_config_product"/>
+
+</odoo>

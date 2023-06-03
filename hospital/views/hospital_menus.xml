@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <menuitem id="=patient_menu_root" name="Hospital Management" sequence="-10">
+            <menuitem id="patient_first_level_menu" name="Patient Details" sequence="1">
+                <menuitem id="patient_menu_action" action="patient_action"/>
+            </menuitem>
+            <menuitem id="appointment_first_level_menu" name="Appointment"  sequence="2">
+                <menuitem id="appointment_menu_action" action="appointment_action"/>
+                <menuitem id="hospital_op_first_level_menu" name="OP" action="hospital_op_action"/>
+            </menuitem>
+            <menuitem id="consultation_first_level_menu" name="Consultation" sequence="3">
+                <menuitem id="consultation_menu_action" action="consultation_action" sequence="0"/>
+                <menuitem id="disease_menu_action" action="disease_action"/>
+            </menuitem>
+            <menuitem id="report_first_level_menu" name="Hospital Report" sequence="4">
+                <menuitem id="report_menu_action" action="report_action"/>
+            </menuitem>
+        </menuitem>
+    </data>
+
+</odoo>

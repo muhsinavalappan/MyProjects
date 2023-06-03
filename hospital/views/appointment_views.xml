@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="action_view_op" model="ir.actions.act_window">
+            <field name="name">Op Ticket</field>
+            <field name="res_model">hospital.op</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record id="view_appointment_tree" model="ir.ui.view">
+            <field name="name">appointment.tree</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient_id"/>
+                    <field name="name_id"/>
+                    <field name="doctor_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_consultation_search" model="ir.ui.view">
+            <field name="name">appointment.search</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="patient_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_appointment_form" model="ir.ui.view">
+            <field name="name">appointment.form</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="btn_appointment_confirm" class="oe_highlight" states="draft" string="Confirm"
+                                type="object" help="Move To Appointment state"/>
+                        <button name="btn_op_convert" class="oe_highlight" states="appointment" string="Convert To OP"
+                                type="object"
+                                help="Move Appointment To Op state"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,appointment,op"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="object"  name="action_open_op" attrs="{'invisible': [('state', '!=', 'op')]}">
+                                <field name="op_ticket" string="OP Tickets" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="patient_id"/>
+                                <field name="name_id"/>
+                                <field name="doctor_id"/>
+                                <field name="department_id"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="token_no" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="appointment_action" model="ir.actions.act_window">
+            <field name="name">Appointment</field>
+            <field name="res_model">hospital.appointment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

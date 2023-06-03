@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data>
+
+        <record id="view_details_tree" model="ir.ui.view">
+            <field name="name">partner.details.tree</field>
+            <field name="model">partner.details</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="details"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="coc_coc_action" model="ir.actions.act_window">
+            <field name="name">partner.details</field>
+            <field name="res_model">partner.details</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+    <menuitem id="=partner_details_root" name="Partner details">
+        <menuitem id="partner_details_first_level_menu" action="coc_coc_action"/>
+    </menuitem>
+</odoo>

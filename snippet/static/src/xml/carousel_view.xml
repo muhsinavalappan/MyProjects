@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="my_snippet" xml:space="preserve" name="Most Sold Products">
+	<t t-name="snippet.product_snippets">
+		<div class="container">
+			<section class="s_carousel_wrapper" data-vxml="001">
+				<div t-attf-id="myCarousel"
+                         class="s_carousel s_carousel_default carousel slide"
+                         data-bs-interval="10001">
+					<section class="container dynamic_snippet">
+						<div id="title">
+							<h1 style="text-align:center; font-size:150%; font-style:italic; font-weight:bold;"
+                                    id="title">Most Sold Products</h1>
+						</div>
+						<div id="slide_show_sample"
+                                 class="carousel slide"
+                                 data-bs-ride="carousel"
+                                 data-bs-interval="10001"
+                                 style="margin:70px">
+							<div class="carousel-inner">
+								<div class="row">
+									<t t-foreach="name" t-as="order">
+										<div t-attf-class="carousel-item #{order.set_active ? 'active':''}">
+											<div class="row">
+												<t t-foreach="order" t-as="vals">
+													<div class="card col-md-3" id="total_body">
+														<div class="card-body">
+															<div>
+																<a t-attrf-href="/shop/product/{{vals[1]}}">
+																	<img class="img card-imvalsg-top"
+                                                                             t-attrf-src="/web/image/product.template/{{vals[1]}}/image_1920"
+                                                                             width="80" height="200"
+                                                                             id="img_bdy"/>
+																</a>
+																<br> </br>
+																<span t-esc="vals[0]" style="color:#35979c;"> </span>
+															</div>
+														</div>
+													</div>
+												</t>
+											</div>
+										</div>
+									</t>
+								</div>
+							</div>
+						</div>
+						<a class="carousel-control-prev o_not_editable"
+                               contenteditable="False"
+                               t-attrf-href="#myCarousel"
+                               data-bs-slide="prev" role="img"
+                               aria-lable="previous"
+                               title="previous">
+							<span class="fa fa-chevron-circle-left fa-2x" style=" color: #495057"> </span>
+							<span class="visually-hidden">Previous</span>
+						</a>
+						<a class="carousel-control-next o_not_editable"
+                               contenteditable="False"
+                               t-attrf-href="#myCarousel"
+                               data-bs-slide="next" role="img"
+                               aria-lable="next"
+                               title="next">
+							<span class="fa fa-chevron-circle-right fa-2x" style=" color: #495057"> </span>
+							<span class="visually-hidden">Next</span>
+						</a>
+					</section>
+				</div>
+			</section>
+		</div>
+	</t>
+	<t t-name="snippet.product_view_snippet">
+		<div class="container">
+			<section class="s_carousel_wrapper" data-vxml="001">
+				<div t-attf-id="Carousel"
+                     class="s_carousel s_carousel_default carousel slide"
+                     data-bs-interval="10001">
+					<section class="container dynamic_snippet">
+						<div id="title">
+							<h1 style="text-align:center; font-size:150%; font-style:italic; font-weight:bold;">
+                    Most Viewed Products</h1>
+						</div>
+						<div id="slide_show_sample"
+                         class="carousel slide"
+                         data-bs-ride="carousel"
+                         data-bs-interval="10001"
+                         style="margin:70px">
+							<div class="carousel-inner">
+								<div class="row">
+									<t t-foreach="viewed" t-as="order">
+										<div t-attf-class="carousel-item #{order.set_active ? 'active':''}">
+											<div class="row">
+												<t t-foreach="order" t-as="vals">
+													<div class="card col-md-3" id="total_body">
+														<div class="card-body">
+															<div>
+																<a t-attrf-href="/shop/product/{{vals[1]}}">
+																	<img class="card-imvalsg-top"
+                                             width="90" height="250"
+                                             t-attrf-src="/web/image/product.template/{{vals[1]}}/image_1920"
+                                             id="img_bdy"/>
+																</a>
+															</div>
+															<br/>
+															<span t-esc="vals[0]" style="color:#35979c;"> </span>
+														</div>
+													</div>
+												</t>
+											</div>
+										</div>
+									</t>
+								</div>
+							</div>
+						</div>
+						<a class="carousel-control-prev o_not_editable"
+                       contenteditable="False" t-attrf-href="#Carousel"
+                       data-bs-slide="prev" role="img"
+                       aria-lable="previous"
+                       title="previous">
+							<span class="fa fa-chevron-circle-left fa-2x" style=" color: #495057"> </span>
+							<span class="visually-hidden">Previous</span>
+						</a>
+						<a class="carousel-control-next o_not_editable"
+                       contenteditable="False" t-attrf-href="#Carousel"
+                       data-bs-slide="next" role="img" aria-lable="next"
+                       title="next">
+							<span class="fa fa-chevron-circle-right fa-2x" style=" color: #495057"> </span>
+							<span class="visually-hidden">Next</span>
+						</a>
+					</section>
+				</div>
+			</section>
+		</div>
+	</t>
+</template>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="my_qr_icon" xml:space="preserve" name="systray_qr">
+	<t t-name="qr_code.my_qr_icon">
+		<div class='test_div dropdown dropdown-menu dropdown-menu-left show'
+             style='width:250px; border: double;'>
+			<div class="qr">
+				<div class="main class">
+					<div class="container">
+						<form class="qr_form">
+							<input type="text" id="input_text"
+                                   class="form-control"
+                                   name="input_text"
+                                   autocomplete="off"/>
+                            <div class="qr-code"/>
+							<img alt="" id="qr_img" style="padding-left:25px;"/>
+
+                            <center>
+								<input type="button"
+                                       class="btn btn-primary"
+                                       id="generate"
+                                       title="Generate"
+                                       value="Generate"
+                                       style="font_size:10px">
+								</input>
+                                <input type="reset"
+                                       class="btn btn-secondary"
+                                       id="reset"
+                                       title="Reset"
+                                       value="Reset"/>
+							</center>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+</templates>

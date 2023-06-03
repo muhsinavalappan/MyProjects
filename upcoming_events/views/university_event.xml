@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_university_event_tree" model="ir.ui.view">
+            <field name="name">university.event.tree</field>
+            <field name="model">university.event</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="u_name"/>
+                    <field name="u_event"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_university_event_search" model="ir.ui.view">
+            <field name="name">university.event.search</field>
+            <field name="model">university.event</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="u_name"/>
+                    <field name="start_date"/>
+                    <field name="end_date"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_university_event_form" model="ir.ui.view">
+            <field name="name">university.event.form</field>
+            <field name="model">university.event</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,ongoing,expired"/>
+                        <button name="button_confirm" class="oe_highlight"
+                                states="draft" string="Confirm"
+                                type="object"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="u_name"/>
+                                <field name="code"/>
+                                <field name="u_type"/>
+                                <field name="u_event"/>
+                                <field name="event_type"/>
+                            </group>
+                            <group>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Event Slots" name="event_slots">
+                                <field name="event_slot_ids">
+                                    <tree string="Event Slots"
+                                          editable="bottom">
+                                        <field name="time"
+                                               required="True"/>
+                                        <field name="content"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="university_event_action" model="ir.actions.act_window">
+            <field name="name">University Events</field>
+            <field name="res_model">university.event</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+    <menuitem id="menu_university_event" name="University Events"
+              parent="event.event_main_menu" action="university_event_action"/>
+</odoo>

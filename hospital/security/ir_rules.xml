@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="doctor_appointment_visibility" model="ir.rule">
+        <field name="name">User can only see his Appointment</field>
+        <field name="model_id" ref="model_hospital_appointment"/>
+        <field name="groups" eval="[(4, ref ('group_doctor'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="domain_force">[('doctor_id', '=', user.partner_id.id)]</field>
+    </record>
+</odoo>

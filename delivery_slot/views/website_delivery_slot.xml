@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="website_delivery_slot" inherit_id="website_sale.cart_lines">
+        <xpath expr="//table[hasclass('js_cart_lines')]" position="before">
+            <div class="slot-time-div">
+                <div class="form-group col-12 s_website_form_field s_website_form_required">
+                    <span class="s_website_form_label_content">
+                        <b>Choose A Delivery Time</b><br/>
+                    </span>
+                    <div class="col-sm" id="hour_value">
+                    <input type="radio" id="home" name="slot_hour"
+                           value="home"/>
+                    <label for="html">Home Hours</label>
+                    </div>
+                    <div class="col-sm">
+                    <input type="radio" id="office" name="slot_hour"
+                           value="office"/>
+                    <label for="css">Office Hours</label>
+                    </div>
+                    <br/>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//td[hasclass('td-product_name')]" position="inside">
+            <div class="delivery_slot_div">
+                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                     data-type="char" data-name="Field" id="date_div">
+                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                        <label class="col-form-label col-sm-auto s_website_form_label"
+                               style="width: 200px"
+                               for="date">
+                            <span class="s_website_form_label_content">
+                                Delivery Date
+                            </span>
+                        </label>
+                        <div class="col-sm">
+                            <input id="date"
+                                   type="date"
+                                   class="form-control link-style"
+                                   t-att-value="date"
+                                   name="date" required="1"
+                                   t-att-data-line-id="line.id"
+                                   t-att-data-product-id="line.product_id.id"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-12 s_website_form_field s_website_form_required"
+                     data-type="char" data-name="Field" id="divs">
+                    <div class="row s_col_no_resize s_col_no_bgcolor">
+                        <label class="col-form-label col-sm-auto s_website_form_label"
+                               style="width: 200px"
+                               for="search">
+                            <span class="s_website_form_label_content">
+                                Delivery Slot
+                            </span>
+                        </label>
+                        <div class="col-sm">
+                            <select name="slot_id" id="slot_id"
+                                    class="form-control link-style"
+                                    t-att-data-line-id="line.id"
+                                    t-att-data-product-id="line.product_id.id">
+                                <option value="">select</option>
+                                <t t-foreach="slots" t-as="slot">
+                                    <option t-att-value="slot.id">
+                                        <t t-esc="slot.name"
+                                           t-att-value="slot.id"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

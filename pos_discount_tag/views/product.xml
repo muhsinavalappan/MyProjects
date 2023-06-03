@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_inherit" model="ir.ui.view">
+        <field name="name">product.form.inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <field name="taxes_id" position="before">
+                <field name="disc_price_tag" widget="monetary" />
+                <field name="old_price" widget="monetary" />
+            </field>
+        </field>
+    </record>
+</odoo>

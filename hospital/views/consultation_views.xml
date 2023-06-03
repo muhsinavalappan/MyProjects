@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_consultation_tree" model="ir.ui.view">
+            <field name="name">hospital.consultation.tree</field>
+            <field name="model">hospital.consultation</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient_id"/>
+                    <field name="name"/>
+                    <field name="doctor_id"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_consultation_search" model="ir.ui.view">
+            <field name="name">hospital.consultation.search</field>
+            <field name="model">hospital.consultation</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="patient_id"/>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_consultation_form" model="ir.ui.view">
+            <field name="name">hospital.consultation.form</field>
+            <field name="model">hospital.consultation</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="patient_id"/>
+                                <field name="name"/>
+                                <field name="consult_type"/>
+                                <field name="doctor_id"/>
+                                <field name="department_id"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="disease"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Diagnose" name="diagnose_details">
+                                    <field name="diagnose" widget="html" >
+                                    </field>
+
+                            </page>
+                            <page string="Treatment" name="treatment_details">
+                                <field name="treatment_ids">
+                                    <tree string="Treatment" editable="bottom">
+                                        <field name="medicine"/>
+                                        <field name="dose"/>
+                                        <field name="days"/>
+                                        <field name="description"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="consultation_action" model="ir.actions.act_window">
+            <field name="name">Consultation Details</field>
+            <field name="res_model">hospital.consultation</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

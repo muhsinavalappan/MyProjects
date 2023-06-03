@@ -1,0 +1,12 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_quality_m,access.quality,model_quality_measure,quality_manager,1,1,1,1
+access_quality_u,access.quality,model_quality_measure,quality_user,1,1,1,1
+
+access_quality_trigger_m,access.quality_trigger,model_trigger_quality,quality_manager,1,1,1,1
+access_quality_trigger_u,access.quality_trigger,model_trigger_quality,quality_user,1,1,1,1
+
+access_quality_alert_m,access.quality_alert,model_quality_alert,quality_manager,1,1,1,1
+access_quality_alert_u,access.quality_alert,model_quality_alert,quality_user,1,0,0,0
+
+access_quality_test_m,access.quality.test,model_quality_test,quality_manager,1,1,1,1
+access_quality_test_u,access.quality.test,model_quality_test,quality_user,1,1,1,1

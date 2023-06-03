@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_material_orders_tree" model="ir.ui.view">
+            <field name="name">material.order.tree</field>
+            <field name="model">material.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="employee_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_hospital_op_search" model="ir.ui.view">
+            <field name="name">material.order.search</field>
+            <field name="model">material.order</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="employee_id"/>
+                </search>
+            </field>
+        </record>
+        <record id="view_material_order_form" model="ir.ui.view">
+            <field name="name">material.order.form</field>
+            <field name="model">material.order</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_confirm" class="oe_highlight"
+                                states="draft" string="Submit to Manager"
+                                type="object"/>
+                        <button name="btn_approve_manager" string="Approve"
+                                type="object"
+                                states="to approve"
+                                groups="material_request.group_req_manager"
+                                class="btn-primary"/>
+                        <button name="btn_approve_head" string="Approve"
+                                type="object"
+                                states="to approve1"
+                                groups="material_request.group_req_head"
+                                class="btn-primary"/>
+                        <button name="btn_reject_head" string="Reject"
+                                type="object"
+                                states="to approve1"
+                                groups="material_request.group_req_head"
+                                class="btn-primary"/>
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="draft,to approve,purchase"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="object"
+                                    icon="fa-list-alt"
+                                    name="action_purchase_order"
+                                    attrs="{'invisible': [('state', '!=', 'purchase')]}">
+                                <field name="po" string="Orders"
+                                       widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" icon="fa-arrows-v"
+                                    type="object"
+                                    name="action_internal_transfer"
+                                    attrs="{'invisible': [('state', '!=', 'purchase')]}">
+                                <field name="transfer"
+                                       string="Internal Transfer"
+                                       widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="employee_id"/>
+                                <field name="manager_id"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Order Lines" name="product_lines" >
+                                <field name="order_ids">
+                                    <tree string="Order Lines"
+                                          editable="bottom">
+                                        <field name="product_id" required="True"/>
+                                        <field name="type"/>
+                                        <field name="product_qty"/>
+                                        <field name="price_unit"/>
+                                        <field name="location_id"
+                                               attrs="{'invisible': [('type', '!=', 'it')]}"/>
+                                        <field name="location_dest_id"
+                                               attrs="{'invisible': [('type', '!=', 'it')]}"/>
+                                        <field name="operation_type_id"
+                                               attrs="{'invisible': [('type', '!=', 'it')]}"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="material_request_action" model="ir.actions.act_window">
+            <field name="name">Orders</field>
+            <field name="res_model">material.order</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+
+
+</odoo>

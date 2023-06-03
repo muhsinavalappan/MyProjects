@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_university_name_tree" model="ir.ui.view">
+            <field name="name">university.name.tree</field>
+            <field name="model">university.name</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="type"/>
+                </tree>
+            </field>
+        </record>
+        <record id="university_action" model="ir.actions.act_window">
+            <field name="name">University</field>
+            <field name="res_model">university.name</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <record id="view_event_slot_tree" model="ir.ui.view">
+            <field name="name">Event Slot</field>
+            <field name="model">event.slot</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="time"/>
+                    <field name="content"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+    <menuitem id="menu_university_name" name="University"
+              parent="event.menu_event_configuration" action="university_action"/>
+
+
+</odoo>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+	<t t-name="OrderLinesReceipt" t-inherit="point_of_sale.OrderLinesReceipt"
+       t-inherit-mode="extension" owl="1">
+		<xpath expr="//t[@t-esc='line.product_name_wrapped[0]']"
+                   position="after">
+			<t t-if="line.product_grade">
+                (Grade:
+
+				<t t-esc="line.product_grade"/>)
+                </t>
+		</xpath>
+		<xpath expr="//div[@t-esc='line.product_name_wrapped[0]']"
+               position="after">
+                (Grade:
+
+			<t t-esc="line.product_grade"/>)
+
+		</xpath>
+	</t>
+	<t t-name="Orderline" t-inherit="point_of_sale.Orderline"
+       t-inherit-mode="extension" owl="1">
+		<xpath expr="//span[hasclass('product-name')]" position="inside">
+			<t t-if="props.line.product.product_grade">
+				<li>
+                    Grade :
+
+					<t t-esc="props.line.product.product_grade"/>
+				</li>
+			</t>
+		</xpath>
+	</t>
+</templates>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_approval_block_tree" model="ir.ui.view">
+            <field name="name">approval.block.tree</field>
+            <field name="model">approval.block</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="amount_limit"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_approval_block_form" model="ir.ui.view">
+            <field name="name">approval.block.form</field>
+            <field name="model">approval.block</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="amount_limit"/>
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="approval_request_action" model="ir.actions.act_window">
+            <field name="name">Approval Blocks</field>
+            <field name="res_model">approval.block</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+    <menuitem name="Approval Block"
+              id="menu_approval_block_root"
+              sequence="0"/>
+    <menuitem id="menu_approval_block_first_menu" name="Approval Blocks"
+              parent="menu_approval_block_root" sequence="1"
+              action="approval_request_action"/>
+</odoo>

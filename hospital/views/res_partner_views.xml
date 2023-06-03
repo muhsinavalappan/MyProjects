@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="res_partner_view_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='function']" position="before">
+                    <field name="dob"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="hr_employee_view_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='department_id']" position="before">
+                    <field name="is_doctor"/>
+                    <field name="token_no" attrs="{'invisible':[('is_doctor', '=', False)]}"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="fee" widget="monetary" attrs="{'invisible':[('is_doctor', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+</odoo>
+
+

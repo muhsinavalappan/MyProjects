@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_disease_tree" model="ir.ui.view">
+            <field name="name">disease.tree</field>
+            <field name="model">patient.disease</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_disease_form" model="ir.ui.view">
+            <field name="name">disease.form</field>
+            <field name="model">patient.disease</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name" force_save="1"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="disease_action" model="ir.actions.act_window">
+            <field name="name">Disease</field>
+            <field name="res_model">patient.disease</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

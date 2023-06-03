@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve" id="template">
+    <t t-name="website_preloader.BlockPreview" t-inherit-mode="extension"
+       t-inherit="website.BlockPreview" owl="1">
+        <xpath expr="//div[hasclass('o_spinner')]/img" position="replace">
+            <img t-attf-src="website_preloader/static/src/img/{{this.spin_state.style}}.png" alt="Loading..."/>
+        </xpath>
+    </t>
+</templates>
+

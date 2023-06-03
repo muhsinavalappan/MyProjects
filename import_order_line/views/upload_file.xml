@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_upload_file_form">
+        <field name="name">upload.file.form</field>
+        <field name="model">upload.file</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="file"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="import_order_line" type="object"
+                            string="Upload"
+                            class="btn-primary"/>
+                    or
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_upload_file">
+        <field name="name">Upload File</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">upload.file</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_upload_file_form"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="product_new_grade_view_form_" model="ir.ui.view">
+            <field name="name">product.product.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="detailed_type" position="after">
+                    <field name="product_grade" string="Grade"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

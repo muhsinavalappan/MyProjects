@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_datafile_blog_tree" model="ir.ui.view">
+            <field name="name">datafile.tree</field>
+            <field name="model">datafile.blog</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="amount_limit"/>
+                    <field name="date"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_datafile_blog_tree2" model="ir.ui.view">
+            <field name="name">datafile.tree2</field>
+            <field name="model">datafile.blog</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_datafile_blog_form" model="ir.ui.view">
+            <field name="name">datafile.blog.form</field>
+            <field name="model">datafile.blog</field>
+            <field name="arch" type="xml">
+                <form>
+                    <button name="create_action" string="Click" type="object"
+                                class="btn-primary"
+                                />
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="amount_limit"/>
+                            <field name="date" />
+
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+        <record id="datafile_blog_action" model="ir.actions.act_window" priority="">
+            <field name="name">Data files</field>
+            <field name="res_model">datafile.blog</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="view_id" ref="view_datafile_blog_tree"/>-->
+        </record>
+    </data>
+    <menuitem name="Data File"
+              id="menu_datafile_blog_root"
+              />
+    <menuitem id="menu_datafile_blog_first_menu" name="Data File"
+              parent="menu_datafile_blog_root" sequence="1"
+              action="datafile_blog_action"/>
+</odoo>

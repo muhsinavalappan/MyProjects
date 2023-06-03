@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="stock_transfer_smart_button" model="ir.ui.view">
+            <field name="name">transfer.buttons</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="action_view_quality_alert"
+                        icon="fa-check-circle-o" attrs="{'invisible':[('alert_count','=',0)]}">
+                        <field string="Quality Alerts" name="alert_count" widget="statinfo"/>
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

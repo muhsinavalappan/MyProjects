@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="product_view_tree" model="ir.ui.view">
+            <field name="name">material.order.tree</field>
+            <field name="model">material.order</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="product_id"/>
+                    <field name="type"/>
+                    <field name="product_qty"/>
+                    <field name="location_id" attrs="{'invisible': [('type', '!=', 'po')]}"/>
+                    <field name="location_dest_id" attrs="{'invisible': [('type', '=', 'po')]}"/>
+                </tree>
+            </field>
+
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="record_1" model="datafile.blog">
+            <field name="name">Record 1</field>
+            <field name="amount_limit">5000</field>
+        </record>
+        <record id="record_2" model="datafile.blog">
+            <field name="name">Record2</field>
+            <field name="amount_limit">10000</field>
+        </record>
+        <record id="record_3" model="datafile.blog">
+            <field name="name">Record 3</field>
+            <field name="amount_limit">20000</field>
+        </record>
+        <record id="record_4" model="datafile.blog">
+            <field name="name">Record4</field>
+            <field name="amount_limit">50000</field>
+        </record>
+    </data>
+</odoo>

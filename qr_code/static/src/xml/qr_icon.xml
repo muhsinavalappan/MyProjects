@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<templates id="template">
+    <t t-name="qr_code.icon">
+        <li class="new_icon">
+            <label style="margin-bottom:0px;" class="my_icon">
+                <div class="icon_div">
+                    <div class="toggle-icon">
+                        <i class="fa-sharp fa-light fa-qrcode my_icon"
+                           id="fa-icon"/>
+                        <t t-call="qr_code.my_qr_icon"/>
+
+                    </div>
+                </div>
+
+            </label>
+        </li>
+    </t>
+
+</templates>

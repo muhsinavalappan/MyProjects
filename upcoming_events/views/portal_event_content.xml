@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="portal_upcoming_event_page"
+              name="Upcoming Event Portal Template"
+              inherit_id="portal.portal_sidebar" primary="True">
+        <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+            <t t-set="o_portal_fullwidth_alert">
+                <t t-call="portal.portal_back_in_edit_mode"/>
+                    <t t-set="backend_url" t-value="'/my/home'"/>
+            </t>
+
+            <div class="row mt16 o_portal_event_sidebar">
+                <!-- Sidebar -->
+                <t t-call="portal.portal_record_sidebar">
+                    <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+                    <t t-set="title">
+                        <h2 class="mb-0">
+                            <b t-field="name.start_date" data-id="start_date"/>
+                        </h2>
+                        <div class="small"><span class="o_portal_sidebar_timeago ml4"/></div>
+                    </t>
+                    <t t-set="entries">
+                        <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                            <li class="list-group-item flex-grow-1">
+                                <div class="small mb-1">
+                                    <strong class="text-muted">Salesperson
+                                    </strong>
+                                </div>
+                                <div class="row">
+                                    <div class="col flex-grow-0 pe-2">
+                                        <img class="rounded-circle mt-1 o_portal_contact_img"
+                                             t-att-src="image_data_uri(user.avatar_1024)"
+                                             alt="Contact"/>
+                                    </div>
+                                    <div class="col ps-0">
+                                        <a href="#discussion" class="small">
+                                            <i class="fa fa-comment"/>
+                                            Send message
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </t>
+                </t>
+
+            <!-- Page content -->
+
+            <div id="event_content" class="col-12 col-lg">
+            <div t-attf-class="card pb-5 ">
+                <div id="introduction"
+                     t-attf-class="pb-2 pt-3 card-header bg-white">
+                    <h2 class="my-0"><b>
+                        <t>Upcoming Event of</t>
+                        <em t-out="name.u_name.name"/>
+                        University</b>
+                    </h2>
+                </div>
+
+                <div t-attf-class="card-body">
+                    <div id="informations">
+                        <div class="row">
+                            <div class="mb-3 col-6">
+                                <t t-if="name.start_date">
+                                    <b>Start Date:</b>
+                                </t>
+                                <t t-else="">
+
+                                </t>
+                                <span t-field="name.start_date"
+                                      t-options='{"widget": "date"}'/>
+                            </div>
+                            <div class="mb-3 col-6">
+                                <strong>University Event</strong>
+                                <span t-field="name.u_event"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <section id="details" style="page-break-inside: auto;"
+                         class="mt32">
+                    <h4 id="details" class="active" style="margin-left: 16px"><b>Time Slots</b></h4>
+                    <table class="table table-sm" id="upcoming_event_table" style="margin-left: 16px">
+                        <thead class="bg-100">
+                            <tr class="active">
+                                <t t-set="time_lines"
+                                   t-value="name.event_slot_ids"/>
+                                <t t-foreach="time_lines" t-as="line">
+                                    <t t-if="line.time">
+                                        <th><span>Time</span></th>
+                                    </t>
+                                    <t tif="line.content">
+                                        <th class="text-start">Content</th>
+                                    </t>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody class="sale_tbody">
+                            <t t-set="time_lines"
+                               t-value="name.event_slot_ids"/>
+                            <t t-foreach="time_lines" t-as="line">
+                                <tr>
+                                    <td>
+                                        <span t-out="line.time"/>
+                                    </td>
+                                    <td class="text-start">
+                                        <span t-out="line.content"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+            </div>
+
+            </div>
+
+            <!--                <div t-attf-class="card pb-5 ">-->
+            <!--                    <div t-call="upcoming_event_page_content"/>-->
+            <!--                </div>-->
+
+            <!-- chatter -->
+            <!--                <div id="event_communication" class="mt-4">-->
+            <!--                    <h2>History</h2>-->
+            <!--                    <t t-call="portal.message_thread"/>-->
+            <!--                </div>-->
+            <!--                </div>&lt;!&ndash; // #quote_content &ndash;&gt;-->
+            <!--            </div>-->
+        </xpath>
+    </template>
+    <template id="upcoming_event_page_content"
+              name="Event Portal Content table">
+        <!-- Intro -->
+        <div id="introduction" t-attf-class="pb-2 pt-3 'card-header bg-white'">
+            <h2 class="my-0">
+                <t>Upcoming Event of</t>
+                <em t-out="name.u_name.name"/>
+            </h2>
+        </div>
+
+        <div t-attf-class="'card-body'">
+            <div id="informations">
+                <div class="row">
+                    <div class="mb-3 col-6">
+                        <t t-if="name.start_date">
+                            <strong>Start Date:</strong>
+                        </t>
+                        <t t-else="">
+
+                        </t>
+                        <span t-field="name.start_date"
+                              t-options='{"widget": "date"}'/>
+                    </div>
+                    <div class="mb-3 col-6">
+                        <strong>University Event</strong>
+                        <span t-field="name.u_event"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section id="details" style="page-break-inside: auto;" class="mt32">
+            <h3 id="details">Time Slots</h3>
+            <table class="table table-sm" id="upcoming_event_table">
+                <thead class="bg-100">
+                    <tr>
+                        <t t-set="time_lines" t-value="name.event_slot_ids"/>
+                        <t t-foreach="time_lines" t-as="line">
+                            <t t-if="line.time">
+                                <th class="text-start">Time</th>
+                            </t>
+                            <t tif="line.content">
+                                <th class="text-end">Content</th>
+                            </t>
+                        </t>
+                    </tr>
+                </thead>
+                <tbody class="sale_tbody">
+                    <t t-set="time_lines" t-value="name.event_slot_ids"/>
+                    <t t-foreach="time_lines" t-as="line">
+                        <tr>
+                            <td>
+                                <t t-out="line.time"/>
+                            </td>
+                            <td>
+                                <t t-out="line.content"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </section>
+    </template>
+
+
+</odoo>

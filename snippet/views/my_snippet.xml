@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="most_sold_snippets" name="Most Sold Products">
+            <section class="container dynamic_snippet">
+                <div class="qweb_most_sold">
+
+                </div>
+            </section>
+        </template>
+    </data>
+</odoo>

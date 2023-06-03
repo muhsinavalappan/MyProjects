@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data>
+
+        <record id="view_coc_bot_tree" model="ir.ui.view">
+            <field name="name">coc.bot.tree</field>
+            <field name="model">coc.bot</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="partner_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_coc_bot_form" model="ir.ui.view">
+            <field name="name">coc.bot.form</field>
+            <field name="model">coc.bot</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="coc_bot_action" model="ir.actions.act_window">
+            <field name="name">Coc Bot</field>
+            <field name="res_model">coc.bot</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+    <menuitem id="=coc_bote_root" name="Coc Bot" sequence="-100">
+        <menuitem id="coc_bot_action_id" action="coc_bot_action"/>
+    </menuitem>
+</odoo>

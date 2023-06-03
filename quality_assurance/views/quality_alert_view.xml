@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_quality_alert_tree" model="ir.ui.view">
+            <field name="name">quality.alert.tree</field>
+            <field name="model">quality.alert</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="source"/>
+                </tree>
+            </field>
+    </record>
+    <record id="view_quality_alert_search" model="ir.ui.view">
+            <field name="name">quality.alert.search</field>
+            <field name="model">quality.alert</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Product" name="group_by_product" domain="[]" context="{'group_by': 'product_id'}"/>
+                        <filter string="source operation" name="group_by_source" domain="[]" context="{'group_by': 'source'}" />
+                        <filter string="Scheduled Date" name="group_by_date" domain="[]" context="{'group_by': 'date'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+    <record id="view_quality_alert_form" model="ir.ui.view">
+        <field name="name">quality.alert.form</field>
+        <field name="model">quality.alert</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_generate_tests" type="object"
+                            string="Generate Tests"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <div>
+                        <h2>
+                            <strong>
+                                <field name="name"/>
+                            </strong>
+                        </h2>
+                    </div>
+                    <br/>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="created_by"/>
+                        </group>
+                        <group>
+                            <field name="date"/>
+                            <field name="source"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Tests" name="quality_test">
+                            <field name="test_ids">
+                                <tree string="Tests" editable="bottom" create="false">
+                                    <field name="name"/>
+                                    <field name="assigned_to"/>
+                                    <field name="quantitative_result" string="Quantitative Result"/>
+                                    <field name="result" string="Qualitative Result"/>
+                                    <field name="status"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="action_quality_alert" model="ir.actions.act_window">
+        <field name="name">Quality Alerts</field>
+        <field name="res_model">quality.alert</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="seq_quality_alert" model="ir.sequence">
+        <field name="name">Quality Alert ID</field>
+        <field name="code">quality.alert</field>
+        <field name="prefix">QA</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="True"/>
+    </record>
+    <menuitem id="quality_alert_menu"
+              action="action_quality_alert"
+              parent="quality_assurance_menu" sequence="2"/>
+</odoo>

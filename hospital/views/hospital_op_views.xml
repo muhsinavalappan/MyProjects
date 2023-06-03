@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_hospital_op_tree" model="ir.ui.view">
+            <field name="name">hospital.op.tree</field>
+            <field name="model">hospital.op</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="patient_id"/>
+                    <field name="name"/>
+                    <field name="doctor_id"/>
+                    <field name="token_no"/>
+                    <field name="gender"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hospital_op_search" model="ir.ui.view">
+            <field name="name">hospital.op.search</field>
+            <field name="model">hospital.op</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="patient_id"/>
+                    <filter string="Male" name="gender" domain="[('gender', '=','male')]"/>
+                    <filter string="Female" name="gender" domain="[('gender', '=','female')]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Doctor" name="doctor_id" context="{'group_by': 'doctor_id'}"/>
+                        <filter string="Patient Name" name="name" context="{'group_by': 'patient_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_hospital_op_form" model="ir.ui.view">
+            <field name="name">hospital.op.form</field>
+            <field name="model">hospital.op</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="button_op" class="oe_highlight" states="draft" string="Confirm" type="object"
+                                help="Move Appointment to In Progress state"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,op"/>
+                        <button name="button_fee_payment" class="oe_highlight" states="op" string="Fee Payment"
+                                type="object" action="account.view_account_payment_register_form"
+                                help="Make Fee Payment"/>
+                    </header>
+                    <sheet>
+                        <div name="button_box" position="inside">
+                            <button class="oe_stat_button" type="object" name="action_open_invoice"
+                                    attrs="{'invisible': [('state', '!=', 'invoiced')]}">
+                                <field name="invoices" string="Invoices" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="token_no"/>
+                                <field name="patient_id"/>
+                                <field name="name"/>
+                                <field name="doctor_id"/>
+                            </group>
+                            <group>
+                                <field name="date"/>
+                                <field name="age"/>
+                                <field name="gender"/>
+                                <field name="blood_group"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="fee" widget="monetary"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+        <record id="hospital_op_action" model="ir.actions.act_window">
+            <field name="name">Op Ticket</field>
+            <field name="res_model">hospital.op</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+</odoo>

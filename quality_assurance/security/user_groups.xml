@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="quality_test_group">
+            <field name="name">Quality</field>
+            <field name="description">User access level for quality module
+            </field>
+            <field name="sequence">0</field>
+        </record>
+        <record id="quality_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="quality_test_group"/>
+        </record>
+
+        <record id="quality_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="quality_test_group"/>
+        </record>
+
+    </data>
+</odoo>

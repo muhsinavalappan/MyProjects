@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<template id="my_systray_icon" xml:space="preserve" name="systray_weather">
+	<t t-name="weather_systray.my_systray_icon">
+		<div class='test_div dropdown dropdown-menu dropdown-menu-left show'>
+			<div class="cloud">
+				<div class="main class">
+					<div class="content" id="div-icon">
+						<img id="wicon" alt="Weather Image"
+                         t-attf-src="{{iconurl}}"> </img>
+						<t t-esc="date"/>
+					</div>
+					<div class="content">
+						<h1>
+							<span t-esc="temp"/>
+							<span t-esc="main"/>
+						</h1>
+					</div>
+					<div class="content">
+						<t t-esc="summary"/>
+					</div>
+					<div class="content">
+						<t t-esc="loc"/>
+					</div>
+					<div class="content">
+                Last Update:
+
+						<div class="content">
+							<t t-esc="datetime"/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</t>
+</template>

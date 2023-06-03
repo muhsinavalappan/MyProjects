@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates id="template" xml:space="preserve">
+<t t-name="PosCustomMessage">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-message" style= "height: 200px;width: 30%;background-color: #e6b4ed">
+                <header class="title">Unknown Barcode
+                    <br />
+                    <span class='message'>
+		<t t-esc=""/>
+			</span>
+                </header>
+                <main class="body">
+                   There is no such a barcode
+                </main>
+                <footer class="footer">
+                    <div class="button cancel">
+                        Cancel
+                    </div>
+                </footer>
+            </div>
+       </div>
+ </t>
+</templates>

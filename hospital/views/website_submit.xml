@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="submit_form" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/appointment/submit</field>
+        <field name="website_published">True</field>
+        <field name="key">hospital.submit_form</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="hospital.submit_form">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks</h1>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-success">
+                                        Appointment created successfully.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+    <record id="submit_patient_card" model="website.page">
+        <field name="name">Thanks</field>
+        <field name="type">qweb</field>
+        <field name="url">/appointment/create/submit</field>
+        <field name="website_published">True</field>
+        <field name="key">hospital.submit_patient_card</field>
+        <field name="arch" type="xml">
+            <t name="Thanks" t-name="hospital.submit_patient_card">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Thanks</h1>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="alert alert-success">
+                                        <t t-esc="card_no"/>
+                                        Patient Card created successfully.
+                                    </div>
+                                     <a href="/appointment" id="my_link">
+                                        Create Appointment</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </t>
+            </t>
+        </field>
+    </record>
+
+
+</odoo>

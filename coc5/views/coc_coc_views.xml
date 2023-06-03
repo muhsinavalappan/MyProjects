@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data>
+
+        <record id="view_coc_5_tree" model="ir.ui.view">
+            <field name="name">coc.coc.tree</field>
+            <field name="model">coc.coc</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="resistance"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_coc_bot_form" model="ir.ui.view">
+            <field name="name">coc.coc.form</field>
+            <field name="model">coc.coc</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+
+                                <field name="resistance" widget="selection_badge" style="display: block;"/>
+<!--                            <field name="resistance"/>-->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="coc_coc_action" model="ir.actions.act_window">
+            <field name="name">Coc coc</field>
+            <field name="res_model">coc.coc</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+    </data>
+    <menuitem id="=coc_coc_root" name="Coc Coc">
+        <menuitem id="coc_coc_first_level_menu" action="coc_coc_action"/>
+    </menuitem>
+</odoo>

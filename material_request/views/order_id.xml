@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+         <record id="seq_material_order" model="ir.sequence">
+            <field name="name">Order No</field>
+            <field name="code">material.order</field>
+            <field name="prefix">M</field>
+            <field name="padding">3</field>
+            <field name="company_id" eval="True"/>
+        </record>
+    </data>
+</odoo>

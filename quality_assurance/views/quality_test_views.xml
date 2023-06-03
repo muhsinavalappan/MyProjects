@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_quality_test_tree" model="ir.ui.view">
+            <field name="name">quality.test.tree</field>
+            <field name="model">quality.test</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="quality_alert_id"/>
+                    <field name="product"/>
+                    <field name="test_type"/>
+                    <field name="assigned_to"/>
+                    <field name="result"
+                           decoration-success="result == 'satisfied'"
+                           decoration-warning="result == 'failed'"
+                           widget="badge"/>
+                    <field name="status"
+                           decoration-success="status == 'pass'"
+                           decoration-warning="status == 'fail'"
+                           widget="badge" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_quality_test_search" model="ir.ui.view">
+            <field name="name">quality.test.search</field>
+            <field name="model">quality.test</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="product"/>
+                    <filter string="Satisfied Tests" name="result"
+                            domain="[('result', '=', 'satisfied')]"/>
+                    <separator/>
+                    <filter string="My Tests"
+                            name="assigned_to_me"
+                            domain="[('assigned_to', '=', uid)]"
+                            help="Tests that are assigned to me"/>
+                    <filter string="Unassigned" name="unassigned_Tests"
+                            domain="[('assigned_to','=', False)]"
+                            help="Tests that are not assigned"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter string="Assigned User"
+                                name="group_by_assigned_user" domain="[]"
+                                context="{'group_by': 'assigned_to'}"/>
+                        <filter string="Quality Alert" name="group_by_alert"
+                                domain="[]"
+                                context="{'group_by': 'quality_alert_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_quality_test_form" model="ir.ui.view">
+            <field name="name">quality.test.form</field>
+            <field name="model">quality.test</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div>
+                            <h2>
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                            </h2>
+                        </div>
+                        <br/>
+                        <group>
+                            <group>
+                                <field name="test_type"/>
+                                <field name="result"
+                                       attrs="{'invisible':[('test_type','=','quantitative')]}"/>
+                                <field name="quantitative_result"
+                                       attrs="{'invisible':[('test_type','=','qualitative')]}"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="measure_id"/>
+                                <field name="quality_alert_id"/>
+                                <field name="product"/>
+                                <field name="assigned_to"
+                                />
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="quality_test_action" model="ir.actions.act_window">
+            <field name="name">Quality Tests</field>
+            <field name="res_model">quality.test</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+    <menuitem id="=quality_test_menu" action="quality_test_action"
+              parent="quality_assurance_menu" sequence="1"/>
+</odoo>

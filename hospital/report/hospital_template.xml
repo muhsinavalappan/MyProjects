@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_hospital">
+        <t t-call="web.html_container">
+            <!--            <t t-foreach="docs" t-as="doc">-->
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+                    <div class="text-center">
+                        <h2>Medical Report</h2>
+                    </div>
+                    <div>
+                        <h5>
+                            <t t-if="form.get('patient_id')">Patient :
+                                <t t-esc="form['patient_id'][1]"/>
+                            </t>
+                        </h5>
+                    </div>
+                    <div>
+                        <h5>
+                            <t t-if="form.get('doctor_id')">
+                                Doctor :
+                                <t t-esc="form['doctor_id'][1]"/>
+                            </t>
+                        </h5>
+                    </div>
+                    <div>
+                        <t t-if="form.get('from_date')">
+                            Date :
+                            <t t-esc="form['from_date']"/>
+                        </t>
+                        <t t-if="form.get('to_date')">
+                            To :
+                            <t t-esc="form['to_date']"/>
+                        </t>
+                    </div>
+                    <t t-if="form.get('disease_id')">
+                        Disease :
+                        <t t-esc="form['disease_id'][1]"/>
+                    </t>
+                    <div>
+
+                    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>SL No</th>
+                                <th>OP</th>
+                                <t t-if="form.get('patient_id')">
+
+                                </t>
+                                <t t-else="">
+                                    <th>Patient Name</th>
+                                </t>
+                                <th>Date</th>
+                                <t t-if="form.get('doctor_id')">
+
+                                </t>
+                                <t t-else="">
+                                    <th>Doctor</th>
+                                </t>
+                                <th>Department</th>
+                                <t t-if="form.get('disease_id')">
+
+                                </t>
+                                <t t-else="">
+                                    <th>Disease</th>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="sql_data" t-as="data">
+                                <td>
+                                    <span t-esc="data_index+1"/>
+                                </td>
+                                <td>
+                                    <span t-esc="data[0]"/>
+                                </td>
+                                <t t-if="form.get('patient_id')">
+
+                                </t>
+                                <t t-else="">
+                                    <td>
+                                        <span t-esc="data[1]"/>
+                                    </td>
+                                </t>
+                                <td>
+                                    <span t-esc="data[2]"/>
+                                </td>
+                                <t t-if="form.get('doctor_id')">
+
+                                </t>
+                                <t t-else="">
+                                    <td>
+                                        <span t-esc="data[3]"/>
+                                    </td>
+                                </t>
+                                <td>
+                                    <span t-esc="data[4]"/>
+                                </td>
+                                <t t-if="form.get('disease_id')">
+
+                                </t>
+                                <t t-else="">
+                                    <td>
+                                        <span t-esc="data[5]"/>
+                                    </td>
+                                </t>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+        <!--        </t>-->
+    </template>
+</odoo>

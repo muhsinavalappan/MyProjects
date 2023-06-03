@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="quality_test_visibility" model="ir.rule">
+        <field name="name">User can only see his Assigned Tests</field>
+        <field name="model_id" ref="model_quality_test"/>
+        <field name="groups" eval="[(4, ref ('quality_user'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">[('assigned_to','=',user.id)]
+        </field>
+    </record>
+</odoo>

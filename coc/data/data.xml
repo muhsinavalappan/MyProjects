@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="record_1" model="coc.bot">
+            <field name="name">Record 1</field>
+            <field name="partner_id"/>
+        </record>
+    </data>
+    <function name="action_find_customer" model="coc.bot">
+        <value eval="[ref('record_1')]"/>
+    </function>
+</odoo>

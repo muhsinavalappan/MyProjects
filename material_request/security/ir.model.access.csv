@@ -1,0 +1,8 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_material_order_m,access.material.order,model_material_order,group_req_manager,1,1,0,1
+access_material_order_h,access.material.order,model_material_order,group_req_head,1,1,0,1
+access_material_order_u,access.material.order,model_material_order,group_req_user,1,1,1,1
+
+access_product_line_m,access.product.line,model_product_line,group_req_manager,1,1,0,1
+access_product_line_h,access.product.line,model_product_line,group_req_head,1,1,0,1
+access_product_line_u,access.product.line,model_product_line,group_req_user,1,1,1,1

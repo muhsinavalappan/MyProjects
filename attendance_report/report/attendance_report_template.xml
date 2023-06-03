@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="report_employee_attendance">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="text-center">
+                        <h2>Attendance Report</h2>
+                    </div>
+                    <div>
+                        <t t-if="employee_id">Employee :
+                            <t t-esc="employee_id"/>
+                        </t>
+                    </div>
+                    <div>
+                        <t t-if="from_date">From :
+                            <t t-esc="from_date"/>
+                        </t>
+                    </div>
+                    <div>
+                        <t t-if="to_date">To :
+                            <t t-esc="to_date"/>
+                        </t>
+                    </div>
+                    <br/>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Sl No</th>
+                                <t t-if="employee_id">
+
+                                </t>
+                                <t t-else="">
+                                    <th>Employee</th>
+                                </t>
+                                <th>Check in</th>
+                                <th>Checkout</th>
+                                <th>worked hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="sql_data" t-as="data">
+                                <td>
+                                    <span t-esc="data_index+1"/>
+                                </td>
+                                <t t-if="employee_id">
+
+                                </t>
+                                <t t-else="">
+                                    <td>
+                                        <span t-esc="data[0]"/>
+                                    </td>
+                                </t>
+                                <td>
+                                    <span t-esc="data[1]"/>
+                                </td>
+                                <td>
+                                    <span t-esc="data[2]"/>
+                                </td>
+                                <td>
+                                    <span t-esc="data[3]"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
