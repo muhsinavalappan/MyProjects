@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+	<t t-inherit="web.ListRenderer" t-inherit-mode="extension">
+		<xpath expr="//*[@class='o_list_renderer o_renderer']"
+               position="after">
+			<div class="o_list_pagination" style=" text-align: end;">
+					Showing from
+
+
+				<t t-if="this.props.list.groups">
+					<t t-esc="this.env.config.pagerProps.offset+1"/> -
+
+					<t t-esc="this.env.config.pagerProps.offset + this.props.list.groups.length"/></t>
+				<t t-else="">
+					<t t-esc="this.env.config.pagerProps.offset+1"/> -
+
+					<t t-esc="this.env.config.pagerProps.offset+this.props.list.records.length"/></t>
+					of
+
+				<t t-esc="this.props.list.count"/>
+					Records
+
+
+			</div>
+		</xpath>
+	</t>
+	<t t-inherit="account.ListRenderer" t-inherit-mode="extension">
+		<xpath expr="//*[@class='o_list_renderer o_renderer']"
+               position="after">
+			<div class="o_list_pagination" style=" text-align: end;">
+					Showing from
+
+				<t t-if="this.props.list.groups">
+					<t t-esc="this.env.config.pagerProps.offset+1"/> -
+
+					<t t-esc="this.env.config.pagerProps.offset + this.props.list.groups.length"/></t>
+				<t t-else="">
+					<t t-esc="this.env.config.pagerProps.offset+1"/> -
+
+					<t t-esc="this.env.config.pagerProps.offset+this.props.list.records.length"/></t>
+					of
+
+				<t t-esc="this.props.list.count"/>
+					Records
+
+			</div>
+		</xpath>
+	</t>
+</templates>
