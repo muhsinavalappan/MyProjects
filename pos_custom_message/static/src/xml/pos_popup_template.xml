@@ -1,23 +1,64 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-<t t-name="PosCustomMessage">
-        <div role="dialog" class="modal-dialog">
-            <div class="popup popup-message" style= "height: 200px;width: 30%;background-color: #e6b4ed">
-                <header class="title">Unknown Barcode
-                    <br />
-                    <span class='message'>
-		<t t-esc=""/>
-			</span>
-                </header>
-                <main class="body">
-                   There is no such a barcode
-                </main>
-                <footer class="footer">
-                    <div class="button cancel">
-                        Cancel
-                    </div>
-                </footer>
-            </div>
-       </div>
- </t>
+	<t t-name="CustomMessageAlertPopup" owl="1">
+		<Draggable>
+			<div class="popup" >
+				<header class="title drag-handle" style="background-color:pink;">
+					<b>
+						<i class='fa fa-bell'/>
+						<t t-esc="props.title" class="fa-warning"/>
+					</b>
+				</header>
+				<main class="body">
+					<t t-esc=" props.body" />
+				</main>
+				<footer class="footer">
+					<div class="button btn-primary" t-on-click="cancel" text-align="center">
+						<t t-esc="props.confirmText" />
+					</div>
+				</footer>
+			</div>
+		</Draggable>
+	</t>
+	<t t-name="CustomMessageInfoPopup" owl="1">
+		<Draggable>
+			<div class="popup" >
+				<header class="title drag-handle" style="background-color:bisque;">
+					<b>
+						<i class='fa fa-exclamation-circle'/>
+						<t t-esc="props.title" />
+					</b>
+				</header>
+				<main class="body">
+					<t t-esc=" props.body" />
+				</main>
+				<footer class="footer">
+					<div class="button btn-primary" t-on-click="cancel">
+						<t t-esc="props.confirmText" />
+					</div>
+				</footer>
+			</div>
+		</Draggable>
+	</t>
+	<t t-name="CustomMessageWarnPopup" owl="1">
+		<Draggable>
+			<div class="popup" >
+				<header class="title drag-handle" style="background-color:darkgray;">
+					<b>
+						<i class='fa fa-exclamation-triangle'/>
+						<t t-esc="props.title" />
+					</b>
+				</header>
+				<main class="body">
+					<t t-esc=" props.body" />
+				</main>
+				<footer class="footer">
+					<div class="button btn-primary" t-on-click="cancel">
+					<div class="button btn-primary" t-on-click="cancel">
+						<t t-esc="props.confirmText" />
+					</div>
+				</footer>
+			</div>
+		</Draggable>
+	</t>
 </templates>

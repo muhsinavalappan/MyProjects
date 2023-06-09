@@ -1,9 +1,13 @@
 /** @odoo-module */
-
 import {
     PosGlobalState
 } from 'point_of_sale.models';
 import Registries from 'point_of_sale.Registries';
+
+/**
+ * NewPosGlobalState extends the PosGlobalState class to add custom message processing functionality.
+ * Inherits from PosGlobalState.
+ */
 const NewPosGlobalState = (PosGlobalState) => class NewPosGlobalState extends PosGlobalState {
     async _processData(loadedData) {
 
@@ -13,4 +17,5 @@ const NewPosGlobalState = (PosGlobalState) => class NewPosGlobalState extends Po
 
     }
 }
+// Extend the PosGlobalState model with the NewPosGlobalState functionality.
 Registries.Model.extend(PosGlobalState, NewPosGlobalState);

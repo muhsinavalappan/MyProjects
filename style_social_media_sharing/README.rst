@@ -2,9 +2,9 @@
     :target: http://www.gnu.org/licenses/AGPL-3.0-standalone.html
     :alt: License: AGPL-3
 
-POS Custom Message v16
+Style Social Media Sharing v16
 =================================
-This module helps you to show custom popup messages at pos screen.
+This module helps you to choose preloader styles for website.
 
 Configuration
 =============
